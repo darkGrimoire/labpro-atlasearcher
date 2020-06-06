@@ -1,48 +1,40 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SearchResult from './SearchResult'
-import { makeStyles, TextField } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 
 class Form extends Component {
-
   constructor(props) {
     super(props)
   
     this.state = {
        keywords: ''
     }
+    this.onSubmitHandler = this.onSubmitHandler.bind(this)
   }
-
-  onChangeHandler = (e) => {
-    this.setState({[e.target.name]: [e.target.value]})
-  }
-
+  
   onSubmitHandler = e => {
     e.preventDefault()
-    console.log(e)
-    
+    this.setState({ keywords: e.target.value})
+    console.log(e.target.value)
   }
-
+  
   render() {
     const { keywords } = this.state
     return (
       <div>
-        <form autoComplete="off" onSubmit={this.onSubmitHandler}>
-          {/* <input 
-            type="text" 
-            name="keywords" 
-            value={keywords} 
-            onChange={this.onChangeHandler}
-          /> */}
+        <form autoComplete="off" onSubmit={e => {e.preventDefault()}}>
           <TextField
             id="keywords"
             label="Search me!"
             type="search"
+            value={keywords}
             fullWidth
             autoFocus
+            onChange={this.onSubmitHandler}
           />
         </form>
-        <SearchResult />
+        <SearchResult searchid={keywords}/>
       </div>
     )
   }

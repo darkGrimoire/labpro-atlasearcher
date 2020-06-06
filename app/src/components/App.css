@@ -1,6 +1,10 @@
 .main-container {
   justify-content: center;
-  border-radius: 25px;
   padding: 5rem;
   padding-bottom: 100%;
+}
+
+.error {
+  color: crimson;
+  font-size: smaller;
 }
