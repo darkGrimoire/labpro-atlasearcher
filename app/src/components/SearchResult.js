@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Box, Container } from '@material-ui/core'
+import { Box, Container, Divider } from '@material-ui/core'
 import "./App.css"
 import GraphItem from './GraphItem'
+import { LineTo, SteppedLineTo } from 'react-lineto'
 
 class SearchResult extends Component {
 
@@ -15,6 +16,12 @@ class SearchResult extends Component {
     }
   }
   isNumeric = /^(0|-?[1-9][0-9]*)$/
+  lineStyle = {
+    delay: true,
+    borderColor: '#ddd',
+    borderStyle: 'solid',
+    borderWidth: 2
+  }
   
   componentDidMount() {
     console.log(`didMount ${this.props.searchid}`)
@@ -36,7 +43,6 @@ class SearchResult extends Component {
     }
   }
 
-
   getSearchResult = searchid => {
     axios.get(`https://avatar.labpro.dev/friends/${searchid}`)
       .then(response =>{
@@ -52,11 +58,36 @@ class SearchResult extends Component {
   render() {
     const { error, result } = this.state
     console.log(`search rendered! ${result.id}`)
+    if (typeof result.id === "undefined") {return <span className="error">{error}</span>}
     return (
       <div>
-        <span className="error">{error}</span>
         <Container>
           <Box
+            display="flex"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+            marginBottom="50px"
+          >
+            <div className={result.id}>
+              <GraphItem name={result.id} result={result} />
+            </div>
+          </Box>
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+            >
+          {
+            result.friends.map(friend => <div key={friend.id} className={friend.id}><GraphItem name={friend.id} result={friend} /></div>)
+          } 
+          </Box>
+          {
+            // result.friends.map(friend => <LineTo from={result.id} to={friend.id}/>)
+            result.friends.map(friend => <SteppedLineTo from={result.id} to={friend.id} orientation="v" />)
+          }
+          {/* <Box
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -85,7 +116,7 @@ class SearchResult extends Component {
             <GraphItem result={result} />
             <GraphItem result={result} />
             <GraphItem result={result} />
-          </Box>
+          </Box> */}
         </Container>
       </div>
     )
