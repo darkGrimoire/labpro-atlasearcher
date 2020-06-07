@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container } from '@material-ui/core'
+import { Box, Container } from '@material-ui/core'
 import "./App.css"
 import GraphItem from './GraphItem'
 
@@ -56,7 +56,36 @@ class SearchResult extends Component {
       <div>
         <span className="error">{error}</span>
         <Container>
-          <GraphItem result={result} />
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+          </Box>
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+            <GraphItem result={result} />
+          </Box>
         </Container>
       </div>
     )
