@@ -15,7 +15,6 @@ class Form extends Component {
   onSubmitHandler = e => {
     e.preventDefault()
     this.setState({ keywords: e.target.value})
-    console.log(e.target.value)
   }
   
   render() {

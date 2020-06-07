@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Box, Container, Divider } from '@material-ui/core'
+import { Box, Container } from '@material-ui/core'
 import "./App.css"
 import GraphItem from './GraphItem'
-import { LineTo, SteppedLineTo } from 'react-lineto'
+import LineTo from 'react-lineto'
 
 class SearchResult extends Component {
 
@@ -12,7 +12,8 @@ class SearchResult extends Component {
   
     this.state = {
       error: '',
-      result: {}
+      result: {},
+      friends: []
     }
   }
   isNumeric = /^(0|-?[1-9][0-9]*)$/
@@ -20,7 +21,7 @@ class SearchResult extends Component {
     delay: true,
     borderColor: '#ddd',
     borderStyle: 'solid',
-    borderWidth: 2
+    borderWidth: 1
   }
   
   componentDidMount() {
@@ -34,9 +35,9 @@ class SearchResult extends Component {
     console.log(`didUpdate ${this.props.searchid}`)
     if (this.props.searchid !== prevProps.searchid) {
       if (!this.props.searchid.length){
-        this.setState({error: '', result: {}})
+        this.setState({error: '', result: {}, friends: []})
       }else if (!this.isNumeric.test(this.props.searchid)){
-        this.setState({error: 'Please type only numeric values', result: {}})
+        this.setState({error: 'Please type only numeric values', result: {}, friends: []})
       }else{
         this.getSearchResult(this.props.searchid)
       }
@@ -47,7 +48,10 @@ class SearchResult extends Component {
     axios.get(`https://avatar.labpro.dev/friends/${searchid}`)
       .then(response =>{
         console.log(response.data.payload)
-        this.setState({error: '', result: response.data.payload})
+        const friends = response.data.payload.friends
+        const uniqueFriends = Array.from(new Set(friends.filter(x => x.id !== response.data.payload.id).map(x => x.id))).map(id => {return friends.find(x => x.id === id)})
+        console.log(uniqueFriends)
+        this.setState({error: '', result: response.data.payload, friends: uniqueFriends})
       })
       .catch(error => {
         console.log(error)
@@ -56,8 +60,9 @@ class SearchResult extends Component {
   }
 
   render() {
-    const { error, result } = this.state
-    console.log(`search rendered! ${result.id}`)
+    const { error, result, friends } = this.state
+    console.log(`search rendered!`)
+    console.log(this.state)
     if (typeof result.id === "undefined") {return <span className="error">{error}</span>}
     return (
       <div>
@@ -80,44 +85,13 @@ class SearchResult extends Component {
             justifyContent="center"
             >
           {
-            result.friends.map(friend => <div key={friend.id} className={friend.id}><GraphItem name={friend.id} result={friend} /></div>)
+            friends.map(friend => <div key={friend.id} className={friend.id}><GraphItem name={friend.id} result={friend} /></div>)
           } 
           </Box>
-          {
-            // result.friends.map(friend => <LineTo from={result.id} to={friend.id}/>)
-            result.friends.map(friend => <SteppedLineTo from={result.id} to={friend.id} orientation="v" />)
-          }
-          {/* <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-          </Box>
-          <Box
-            display="flex"
-            flexWrap="wrap"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-            <GraphItem result={result} />
-          </Box> */}
         </Container>
+          {
+            friends.map(friend => <LineTo from={result.id} to={friend.id} fromAnchor="bottom" toAnchor="top" {...this.lineStyle}/>)
+          }
       </div>
     )
   }

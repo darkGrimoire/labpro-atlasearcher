@@ -32,19 +32,14 @@ const avatarSelector = element => {
   switch(element){
     case "air":
       return <IconButton size="small" style={style.avatarAirRipple}><Avatar src={air} style={style.avatarSize}/></IconButton>
-      break
     case "water":
       return <IconButton size="small" style={style.avatarWaterRipple}><Avatar src={water} style={style.avatarSize}/></IconButton>
-      break
     case "earth":
       return <IconButton size="small" style={style.avatarEarthRipple}><Avatar src={earth} style={style.avatarSize}/></IconButton>
-      break
     case "fire":
       return <IconButton size="small" style={style.avatarFireRipple}><Avatar src={fire} style={style.avatarSize}/></IconButton>
-      break
     default:
       return <Avatar />
-      break
   }
 }
 
@@ -60,7 +55,6 @@ const renderMessage = (id, name, element) => {
 
 function GraphItem(props) {
   const { result } = props
-  console.log(result.element)
   if (typeof result.id === "undefined") { return null }
   return (
     <React.Fragment>
@@ -69,7 +63,7 @@ function GraphItem(props) {
           {avatarSelector(result.element)}
         </Tooltip>
         <p style={style.caption}>
-          {result.name.indexOf(' ') == -1 ? result.name : result.name.substr(0,result.name.indexOf(' '))}
+          {result.name.indexOf(' ') === -1 ? result.name : result.name.substr(0,result.name.indexOf(' '))}
         </p>
       </Box>
     </React.Fragment>
