@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Container } from '@material-ui/core'
 import "./App.css"
+import GraphItem from './GraphItem'
 
 class SearchResult extends Component {
 
@@ -8,43 +10,56 @@ class SearchResult extends Component {
     super(props)
   
     this.state = {
-      error: true,
+      error: '',
       result: {}
     }
   }
+  isNumeric = /^(0|-?[1-9][0-9]*)$/
   
   componentDidMount() {
     console.log(`didMount ${this.props.searchid}`)
-    this.getSearchResult(this.props.searchid)
+    if (this.props.searchid.length){
+      this.getSearchResult(this.props.searchid)
+    }
   }
 
   componentDidUpdate(prevProps) {
     console.log(`didUpdate ${this.props.searchid}`)
     if (this.props.searchid !== prevProps.searchid) {
-      this.getSearchResult(this.props.searchid)
+      if (!this.props.searchid.length){
+        this.setState({error: '', result: {}})
+      }else if (!this.isNumeric.test(this.props.searchid)){
+        this.setState({error: 'Please type only numeric values', result: {}})
+      }else{
+        this.getSearchResult(this.props.searchid)
+      }
     }
   }
+
 
   getSearchResult = searchid => {
     axios.get(`https://avatar.labpro.dev/friends/${searchid}`)
       .then(response =>{
         console.log(response.data.payload)
-        this.setState({error: false, result: response.data.payload})
+        this.setState({error: '', result: response.data.payload})
       })
       .catch(error => {
         console.log(error)
-        this.setState({error: true, result: {}})
+        this.setState({error: 'No matching data found', result: {}})
       })
   }
 
   render() {
     const { error, result } = this.state
     console.log(`search rendered! ${result.id}`)
-    if (!error){
-      return <div>{result.id}. {result.name} with element {result.element}.</div>
-    }else{
-      return <span className="error">No matching data found...</span>
-    }
+    return (
+      <div>
+        <span className="error">{error}</span>
+        <Container>
+          <GraphItem result={result} />
+        </Container>
+      </div>
+    )
   }
 }
 
