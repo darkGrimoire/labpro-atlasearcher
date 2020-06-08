@@ -13,3 +13,11 @@
   box-shadow: 0px 0px 20px rgb(199, 255, 198);
   border-radius: 25px;
 }
+
+.level-info {
+  background-color: whitesmoke;
+  box-shadow: 4px 4px 10px grey;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 25px;
+}

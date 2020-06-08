@@ -9,7 +9,7 @@ function App() {
       <Grid container>
         <Grid item sm={12}>
           <Paper className="main-container" elevation={10}>
-            {/* <Grow in={true} timeout={1000}> */}
+            <Grow in={true} timeout={1000}>
               <Typography
                 variant="h3"
                 gutterBottom
@@ -17,7 +17,7 @@ function App() {
                 >
                 ATLA Searcher
               </Typography>
-            {/* </Grow> */}
+            </Grow>
             <Form />
           </Paper>
         </Grid>

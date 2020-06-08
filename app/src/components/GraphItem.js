@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Avatar, Tooltip, Typography, IconButton, Box } from '@material-ui/core'
+import { Avatar, Tooltip, Typography, IconButton, Box, Grow } from '@material-ui/core'
 import air from '../static/air.png'
 import water from '../static/water.png'
 import earth from '../static/earth.png'
@@ -68,14 +68,16 @@ class GraphItem extends Component {
   const { onClickExpand, result } = this.props
     return (
       <React.Fragment>
-        <Box display="block" textAlign="center" marginX="5px">
-          <Tooltip placement="right" title={this.renderMessage(result.id, result.name, result.element)}>
-            {this.avatarSelector(result.element, onClickExpand)}
-          </Tooltip>
-          <p style={style.caption}>
-            {result.name.indexOf(' ') === -1 ? result.name : result.name.substr(0,result.name.indexOf(' '))}
-          </p>
-        </Box>
+        <Grow in={true} timeout='auto'>
+          <Box display="block" textAlign="center" marginX="5px">
+            <Tooltip placement="right" title={this.renderMessage(result.id, result.name, result.element)}>
+              {this.avatarSelector(result.element, onClickExpand)}
+            </Tooltip>
+            <p style={style.caption}>
+              {result.name.indexOf(' ') === -1 ? result.name : result.name.substr(0,result.name.indexOf(' '))}
+            </p>
+          </Box>
+        </Grow>
       </React.Fragment>
     )
   }

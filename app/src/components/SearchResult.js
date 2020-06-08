@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Box, Container } from '@material-ui/core'
+import { Box, Container, Typography } from '@material-ui/core'
 import "./App.css"
 import GraphItem from './GraphItem'
 import LineTo from 'react-lineto'
@@ -104,6 +104,7 @@ class SearchResult extends Component {
             <GraphItem onClickExpand={this.onClickExpand} level={0} result={results[0]} />
           </div>
         </Box>
+        <Typography variant='overline' className='level-info'>Level 1</Typography>
         <Box
           display="flex"
           flexWrap="wrap"
@@ -124,6 +125,7 @@ class SearchResult extends Component {
             if (level == 0) {return null}
             return (
               <React.Fragment>
+                <Typography variant='overline' className='level-info'>Level {level+1}</Typography>
                 <Box
                 display="flex"
                 flexWrap="wrap"
