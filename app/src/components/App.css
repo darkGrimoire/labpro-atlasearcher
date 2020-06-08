@@ -1,10 +1,15 @@
 .main-container {
   justify-content: center;
   padding: 5rem 1rem;
-  padding-bottom: 100%;
 }
 
 .error {
   color: crimson;
   font-size: smaller;
+}
+
+.highlight {
+  background-color: rgba(199, 255, 198, .7);
+  box-shadow: 0px 0px 20px rgb(199, 255, 198);
+  border-radius: 25px;
 }
