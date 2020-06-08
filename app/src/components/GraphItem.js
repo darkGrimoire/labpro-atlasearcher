@@ -24,7 +24,7 @@ const style = {
   },
   caption: {
     fontSize: '10px',
-    color: '#282c34'
+    color: '#333842'
   },
 }
 
@@ -34,21 +34,20 @@ class GraphItem extends Component {
     super(props)
   
     this.state = {
-      level: this.props.level,
-      id: this.props.result.id
+      level: this.props.level
     }
   }
   
-  avatarSelector = (element, onClickExpand) => {
+  avatarSelector = (element, onClickExpand, id) => {
     switch(element){
       case "air":
-        return <IconButton onClick={() => onClickExpand(this.state.level, this.state.id)} size="small" style={style.avatarAirRipple}><Avatar src={air} style={style.avatarSize}/></IconButton>
+        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarAirRipple}><Avatar src={air} style={style.avatarSize}/></IconButton>
       case "water":
-        return <IconButton onClick={() => onClickExpand(this.state.level, this.state.id)} size="small" style={style.avatarWaterRipple}><Avatar src={water} style={style.avatarSize}/></IconButton>
+        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarWaterRipple}><Avatar src={water} style={style.avatarSize}/></IconButton>
       case "earth":
-        return <IconButton onClick={() => onClickExpand(this.state.level, this.state.id)} size="small" style={style.avatarEarthRipple}><Avatar src={earth} style={style.avatarSize}/></IconButton>
+        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarEarthRipple}><Avatar src={earth} style={style.avatarSize}/></IconButton>
       case "fire":
-        return <IconButton onClick={() => onClickExpand(this.state.level, this.state.id)} size="small" style={style.avatarFireRipple}><Avatar src={fire} style={style.avatarSize}/></IconButton>
+        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarFireRipple}><Avatar src={fire} style={style.avatarSize}/></IconButton>
       default:
         return <Avatar />
     }
@@ -71,7 +70,7 @@ class GraphItem extends Component {
         <Grow in={true} timeout='auto'>
           <Box display="block" textAlign="center" marginX="5px">
             <Tooltip placement="right" title={this.renderMessage(result.id, result.name, result.element)}>
-              {this.avatarSelector(result.element, onClickExpand)}
+              {this.avatarSelector(result.element, onClickExpand, result.id)}
             </Tooltip>
             <p style={style.caption}>
               {result.name.indexOf(' ') === -1 ? result.name : result.name.substr(0,result.name.indexOf(' '))}

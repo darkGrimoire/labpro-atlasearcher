@@ -38,7 +38,9 @@ class SearchResult extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(`didUpdate ${this.props.searchid}`)
+    console.log(`didUpdate ${this.props.searchid} ${prevProps.searchid}`)
+    console.log(this.props)
+    console.log(prevProps)
     if (this.props.searchid !== prevProps.searchid) {
       if (!this.props.searchid.length){
         this.setState({error: '', rootNode: [], results: [], friends: []})
@@ -98,7 +100,8 @@ class SearchResult extends Component {
   }
 
   getSearchResult = searchid => {
-    if (!this.isNumeric.test(this.props.searchid)){
+    if (!this.isNumeric.test(searchid)){
+      searchid = searchid.toLowerCase()
       if (this.state.searchList.length !== MAX_ID){
         this.setState({error: 'SearchList has not been built. Please try typing it again', rootNode: [], results: [], friends: []})
       }else if (ELEMENT_TYPE.indexOf(searchid) > -1){

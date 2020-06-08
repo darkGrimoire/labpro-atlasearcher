@@ -14,13 +14,18 @@ class Form extends Component {
     this.onUserTyping = this.onUserTyping.bind(this)
   }
   
+
   onSubmitHandler = debounce(() => {
     this.setState({ keywords: this.state.buffer})
-  }, 300)
+  }, 500)
 
   onUserTyping = e => {
     e.preventDefault()
-    this.setState({buffer: e.target.value}, () => {this.onSubmitHandler()})
+    if (e.target.value.charCodeAt(0) >= 48 && e.target.value.charCodeAt(0) <= 57){
+      this.setState({buffer: e.target.value, keywords: e.target.value})
+    }else{
+      this.setState({buffer: e.target.value}, () => {this.onSubmitHandler()})
+    }
   }
   
   render() {
