@@ -30,7 +30,7 @@ class SearchResult extends Component {
   }
   
   componentDidMount() {
-    console.log(`didMount ${this.props.searchid}`)
+    // console.log(`didMount ${this.props.searchid}`)
     if (this.props.searchid.length){
       this.getSearchResult(this.props.searchid)
     }
@@ -38,9 +38,9 @@ class SearchResult extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(`didUpdate ${this.props.searchid} ${prevProps.searchid}`)
-    console.log(this.props)
-    console.log(prevProps)
+    // console.log(`didUpdate ${this.props.searchid} ${prevProps.searchid}`)
+    // console.log(this.props)
+    // console.log(prevProps)
     if (this.props.searchid !== prevProps.searchid) {
       if (!this.props.searchid.length){
         this.setState({error: '', rootNode: [], results: [], friends: []})
@@ -59,11 +59,11 @@ class SearchResult extends Component {
         newSearchList.push(response.data.payload)
         if (newSearchList.length === MAX_ID){
           this.setState({searchList: newSearchList})
-          console.log('Generate searchList done!')
+          // console.log('Generate searchList done!')
         }
       })
       .catch(error => {
-        console.log(error)
+        // console.log(error)
         this.setState({error: 'Error fetching search list', rootNode: [], results: [], friends: []})
       })
     }
@@ -75,10 +75,10 @@ class SearchResult extends Component {
     const friends = newResults[0].friends
     const uniqueFriends = Array.from(new Set(friends.filter(x => x.id !== newResults[0].id).map(x => x.id))).map(id => {return friends.find(x => x.id === id)})
     const newFriends = [uniqueFriends]
-    console.log('searchByElement log res:')
-    console.log(newRootNode)
-    console.log(newResults)
-    console.log(newFriends)
+    // console.log('searchByElement log res:')
+    // console.log(newRootNode)
+    // console.log(newResults)
+    // console.log(newFriends)
     this.setState({error: '', rootNode: newRootNode, results: newResults, friends: newFriends})
   }
 
@@ -91,10 +91,10 @@ class SearchResult extends Component {
       const friends = newResults[0].friends
       const uniqueFriends = Array.from(new Set(friends.filter(x => x.id !== newResults[0].id).map(x => x.id))).map(id => {return friends.find(x => x.id === id)})
       const newFriends = [uniqueFriends]
-      console.log('searchByName log res:')
-      console.log(newRootNode)
-      console.log(newResults)
-      console.log(newFriends)
+      // console.log('searchByName log res:')
+      // console.log(newRootNode)
+      // console.log(newResults)
+      // console.log(newFriends)
       this.setState({error: '', rootNode: newRootNode, results: newResults, friends: newFriends})
     }
   }
@@ -117,20 +117,20 @@ class SearchResult extends Component {
           const friends = response.data.payload.friends
           const uniqueFriends = Array.from(new Set(friends.filter(x => x.id !== response.data.payload.id).map(x => x.id))).map(id => {return friends.find(x => x.id === id)})
           const newFriends = [uniqueFriends]
-          console.log(newRootNode)
-          console.log(newResults)
-          console.log(newFriends)
+          // console.log(newRootNode)
+          // console.log(newResults)
+          // console.log(newFriends)
           this.setState({error: '', rootNode: newRootNode, results: newResults, friends: newFriends})
         })
         .catch(error => {
-          console.log(error)
+          // console.log(error)
           this.setState({error: 'No matching data found', rootNode: [], results: [], friends: []})
         })
     }
   }
 
   onClickExpand = (level, id) => {
-    console.log(`clicked from level ${level} from ${id}!`)
+    // console.log(`clicked from level ${level} from ${id}!`)
     axios.get(`https://avatar.labpro.dev/friends/${id}`)
       .then(response =>{
         const newResults = this.state.results.slice(0, level)
@@ -139,22 +139,22 @@ class SearchResult extends Component {
         const uniqueFriends = Array.from(new Set(friends.filter(x => x.id !== response.data.payload.id).map(x => x.id))).map(id => {return friends.find(x => x.id === id)})
         const newFriends = this.state.friends.slice(0, level)
         newFriends.push(uniqueFriends)
-        console.log(this.state.rootNode)
-        console.log(newResults)
-        console.log(newFriends)
+        // console.log(this.state.rootNode)
+        // console.log(newResults)
+        // console.log(newFriends)
         this.setState({error: '', results: newResults, friends: newFriends})
       })
       .catch(error => {
-        console.log('Something went wrong while fetching onClickExpand SearchAPI')
-        console.log(error)
+        // console.log('Something went wrong while fetching onClickExpand SearchAPI')
+        // console.log(error)
       })
   }
 
   render() {
     const { error, rootNode, results, friends } = this.state
     const highlighted = results.map(x => x.id)
-    console.log(`search rendered!`)
-    console.log(this.state)
+    // console.log(`search rendered!`)
+    // console.log(this.state)
     if (!results.length) {return <div style={{marginBottom: '300px'}}><span className="error">{error}</span></div>}
     return (
       <Container>
