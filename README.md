@@ -23,12 +23,16 @@ Browser Anda akan otomatis terbuka untuk menjalankan software dalam development 
 
 # Penggunaan
 Masukkan kata kunci pencarian ke dalam Text Field yang telah disediakan (Search me!). Anda dapat melakukan pencarian berupa **ID** (angka), **element** (air/water/earth/fire), ataupun **nama**. Hasil pencarian akan langsung muncul. Anda dapat menempatkan kursor di hasil pencarian untuk melihat informasi lengkap dari simpul graf yang dihasilkan, atau meng-klik simpul graf untuk menelusurinya lebih lanjut. Seluruh simpul yang telah terpilih akan memiliki highlight berwarna hijau muda. Apabila pencarian menghasilkan banyak data, simpul yang akan diperlihatkan pertama kali adalah hasil pencarian pertama.
+
 ![Usage_NameSearch](asset/usage_name.gif)  
 GIF 2. Pencarian Nama  
+
 ![Usage_IDSearch](asset/usage_id.gif)  
 GIF 3. Pencarian ID  
+
 ![Usage_ElementSearch](asset/usage_element.gif)  
 GIF 4. Pencarian Elemen  
+
 ![Usage_ExpandSearch](asset/usage_expand.gif)  
 GIF 5. Menelusuri hasil pencarian  
 
@@ -49,15 +53,14 @@ GIF 5. Menelusuri hasil pencarian
 - [lodash](https://lodash.com/) adalah library luas yang memiliki banyak tools-tools untuk meningkatkan performansi dan mempermudah pemrograman javascript, namun pada kali ini kita hanya menggunakan fungsi debounce yang memungkinkan pencarian dapat dilakukan setelah pengguna selesai mengetik (bukan setiap pengguna mengetikkan satu karakter) sehingga meningkatkan performansi pencarian.
 
 # FAQ/Troubleshooting
->  Pertanyaan: Hasil pencarian menghasilkan `"No matching data found"`  
+#### >>> Pertanyaan: Hasil pencarian menghasilkan `"No matching data found"`  
+> Jawaban: Pencarian tidak dapat menemukan kata kunci terkait.
 
-Jawaban: Pencarian tidak dapat menemukan kata kunci terkait.
->  Pertanyaan: Hasil pencarian menghasilkan `"SearchList has not been built. Please try typing it again"`  
+#### >>> Pertanyaan: Hasil pencarian menghasilkan `"SearchList has not been built. Please try typing it again"`  
+>Jawaban: Laman belum siap menjalankan fungsi pencarian. Mohon ketikkan ulang kata pencariannya. Error ini hanya terjadi pada pencarian nama dan elemen.
 
-Jawaban: Laman belum siap menjalankan fungsi pencarian. Mohon ketikkan ulang kata pencariannya. Error ini hanya terjadi pada pencarian nama dan elemen.
->  Pertanyaan: Hasil pencarian menghasilkan `"Error fetching search list"`  
+#### >>> Pertanyaan: Hasil pencarian menghasilkan `"Error fetching search list"`  
+> Jawaban: Terjadi kesalahan koneksi ketika berkomunikasi dengan API. Mohon periksa koneksi internet Anda, dan coba lagi (refresh) setelah beberapa saat.
 
-Jawaban: Terjadi kesalahan koneksi ketika berkomunikasi dengan API. Mohon periksa koneksi internet Anda, dan coba lagi (refresh) setelah beberapa saat.
->  Pertanyaan: Graf menjadi tidak teratur
-
-Jawaban: Mohon klik salah satu simpul untuk melakukan render ulang garis graf.
+#### >>> Pertanyaan: Graf menjadi tidak teratur
+> Jawaban: Mohon klik salah satu simpul untuk melakukan render ulang garis graf.
