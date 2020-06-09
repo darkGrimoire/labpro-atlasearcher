@@ -24,6 +24,7 @@ function App() {
                 variant="h3"
                 gutterBottom
                 style={{color: '#4d4d4d'}}
+                onContextMenu={e => e.preventDefault()}
                 >
                 Suspect Expander-kun
               </Typography>
