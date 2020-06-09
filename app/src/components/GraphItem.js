@@ -41,13 +41,13 @@ class GraphItem extends Component {
   avatarSelector = (element, onClickExpand, id) => {
     switch(element){
       case "air":
-        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarAirRipple}><Avatar src={air} style={style.avatarSize}/></IconButton>
+        return <IconButton onContextMenu={e => e.preventDefault()} onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarAirRipple}><Avatar src={air} style={style.avatarSize}/></IconButton>
       case "water":
-        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarWaterRipple}><Avatar src={water} style={style.avatarSize}/></IconButton>
+        return <IconButton onContextMenu={e => e.preventDefault()} onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarWaterRipple}><Avatar src={water} style={style.avatarSize}/></IconButton>
       case "earth":
-        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarEarthRipple}><Avatar src={earth} style={style.avatarSize}/></IconButton>
+        return <IconButton onContextMenu={e => e.preventDefault()} onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarEarthRipple}><Avatar src={earth} style={style.avatarSize}/></IconButton>
       case "fire":
-        return <IconButton onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarFireRipple}><Avatar src={fire} style={style.avatarSize}/></IconButton>
+        return <IconButton onContextMenu={e => e.preventDefault()} onClick={() => onClickExpand(this.state.level, id)} size="small" style={style.avatarFireRipple}><Avatar src={fire} style={style.avatarSize}/></IconButton>
       default:
         return <Avatar />
     }
