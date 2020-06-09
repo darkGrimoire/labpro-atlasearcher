@@ -1,56 +1,68 @@
-# Suspect Expander
-Author: Faris Rizki Ekananda (13518125) IF '18  
-Dalam rangka memenuhi Seleksi Labpro 2020 Tahap 2  
-![Overview](asset/overview.gif)
-Suspect Expander adalah aplikasi pencarian yang memanfaatkan [API yang disediakan](https://avatar.labpro.dev/) untuk melakukan pencarian (ID, Nama, ataupun elemen) yang menghasilkan output berupa graf yang dapat diluaskan/ditelusuri lebih lanjut.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Instalasi
-Clone repositori ini terlebih dahulu
-```
-git clone https://github.com/darkGrimoire/labpro-atlasearcher.git
+## Available Scripts
 
-```
-Lalu pergi ke direktori repositori yang telah di-*clone*. Buka command line Anda lalu ketikkan perintah berikut. **Pastikan Anda telah meng-*install* Node.js terlebih dahulu.** [Node.js dapat diunduh disini.](https://nodejs.org/en/download/)
-```
-cd app
-npm install
-npm start
-```
-Browser Anda akan otomatis terbuka untuk menjalankan software dalam development mode. Lokasi aplikasi dijalankan adalah https://localhost:3000/.
+In the project directory, you can run:
 
-# Penggunaan
-Masukkan kata kunci pencarian ke dalam Text Field yang telah disediakan (Search me!). Anda dapat melakukan pencarian berupa **ID** (angka), **element** (air/water/earth/fire), ataupun **nama**. Hasil pencarian akan langsung muncul. Anda dapat menempatkan kursor di hasil pencarian untuk melihat informasi lengkap dari simpul graf yang dihasilkan, atau meng-klik simpul graf untuk menelusurinya lebih lanjut. Seluruh simpul yang telah terpilih akan memiliki highlight berwarna hijau muda. Apabila pencarian menghasilkan banyak data, simpul yang akan diperlihatkan pertama kali adalah hasil pencarian pertama.
-![Usage_NameSearch](asset/usage_name.gif)
-![Usage_IDSearch](asset/usage_id.gif)
-![Usage_ElementSearch](asset/usage_element.gif)
-![Usage_ExpandSearch](asset/usage_expand.gif)
+### `npm start`
 
-# Requirements
-- [react](https://create-react-app.dev/) (bawaan create-react-app)
-- [react-dom](https://create-react-app.dev/) (bawaan create-react-app)
-- [react-lineto](https://create-react-app.dev/) (bawaan create-react-app)
-- [react-scripts](https://create-react-app.dev/) (bawaan create-react-app)
-- [@material-ui/core](material-ui.com/)  (UI yang digunakan)
-- [fontsource-roboto](https://material-ui.com/components/typography/#general) (Font yang digunakan material-ui)  
-- [axios](https://github.com/axios/axios) (HTTP Request Library, untuk meminta data dari API)  
-- [lodash](https://lodash.com/) (Library yang digunakan untuk membuat pencarian dilakukan setelah pengguna selesai mengetik)
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-# Library Reviews
-- [create-react-app](https://create-react-app.dev/) merupakan library yang sangat bagus dalam memulai pemrograman menggunakan ReactJS bagi baik pengguna pemula maupun mahir. Deploymentnya juga sangat mudah karena sudah terdapat [Buildpack Heroku](https://github.com/mars/create-react-app-buildpack).
-- [@material-ui/core](material-ui.com/) atau Material UI adalah library front-end yang menawarkan tampilan UI dengan desain material yang performan dan modern. Material UI juga memiliki fungsi-fungsi yang mempermudah pemrograman front-end seperti Controlled Components, Grid Layouting, dan lainnya.
-- [axios](https://github.com/axios/axios) adalah library request berbasis promise yang mempermudah pembuatan request terhadap API.
-- [lodash](https://lodash.com/) adalah library luas yang memiliki banyak tools-tools untuk meningkatkan performansi dan mempermudah pemrograman javascript, namun pada kali ini kita hanya menggunakan fungsi debounce yang memungkinkan pencarian dapat dilakukan setelah pengguna selesai mengetik (bukan setiap pengguna mengetikkan satu karakter) sehingga meningkatkan performansi pencarian.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-# FAQ/Troubleshooting
->  Q: Hasil pencarian menghasilkan `"No matching data found"`  
+### `npm test`
 
-Jawaban: Pencarian tidak dapat menemukan kata kunci terkait.
->  Q: Hasil pencarian menghasilkan `"SearchList has not been built. Please try typing it again"`  
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Jawaban: Laman belum siap menjalankan fungsi pencarian. Mohon ketikkan ulang kata pencariannya. Error ini hanya terjadi pada pencarian nama dan elemen.
->  Q: Hasil pencarian menghasilkan `"Error fetching search list"`  
+### `npm run build`
 
-Jawaban: Terjadi kesalahan koneksi ketika berkomunikasi dengan API. Mohon periksa koneksi internet Anda, dan coba lagi (refresh) setelah beberapa saat.
->  Q: Graf menjadi tidak teratur
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Jawaban: Mohon klik salah satu simpul untuk melakukan render ulang garis graf.
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
