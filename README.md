@@ -1,7 +1,10 @@
 # Suspect Expander
 Author: Faris Rizki Ekananda (13518125) IF '18  
 Dalam rangka memenuhi Seleksi Labpro 2020 Tahap 2  
-![Overview](asset/overview.gif)
+
+![Overview](asset/overview.gif)  
+GIF 1. Aplikasi Suspect Expander
+
 Suspect Expander adalah aplikasi pencarian yang memanfaatkan [API yang disediakan](https://avatar.labpro.dev/) untuk melakukan pencarian (ID, Nama, ataupun elemen) yang menghasilkan output berupa graf yang dapat diluaskan/ditelusuri lebih lanjut.
 
 # Instalasi
@@ -20,10 +23,14 @@ Browser Anda akan otomatis terbuka untuk menjalankan software dalam development 
 
 # Penggunaan
 Masukkan kata kunci pencarian ke dalam Text Field yang telah disediakan (Search me!). Anda dapat melakukan pencarian berupa **ID** (angka), **element** (air/water/earth/fire), ataupun **nama**. Hasil pencarian akan langsung muncul. Anda dapat menempatkan kursor di hasil pencarian untuk melihat informasi lengkap dari simpul graf yang dihasilkan, atau meng-klik simpul graf untuk menelusurinya lebih lanjut. Seluruh simpul yang telah terpilih akan memiliki highlight berwarna hijau muda. Apabila pencarian menghasilkan banyak data, simpul yang akan diperlihatkan pertama kali adalah hasil pencarian pertama.
-![Usage_NameSearch](asset/usage_name.gif)
-![Usage_IDSearch](asset/usage_id.gif)
-![Usage_ElementSearch](asset/usage_element.gif)
-![Usage_ExpandSearch](asset/usage_expand.gif)
+![Usage_NameSearch](asset/usage_name.gif)  
+GIF 2. Pencarian Nama  
+![Usage_IDSearch](asset/usage_id.gif)  
+GIF 3. Pencarian ID  
+![Usage_ElementSearch](asset/usage_element.gif)  
+GIF 4. Pencarian Elemen  
+![Usage_ExpandSearch](asset/usage_expand.gif)  
+GIF 5. Menelusuri hasil pencarian  
 
 # Requirements
 - [react](https://create-react-app.dev/) (bawaan create-react-app)
@@ -42,15 +49,15 @@ Masukkan kata kunci pencarian ke dalam Text Field yang telah disediakan (Search 
 - [lodash](https://lodash.com/) adalah library luas yang memiliki banyak tools-tools untuk meningkatkan performansi dan mempermudah pemrograman javascript, namun pada kali ini kita hanya menggunakan fungsi debounce yang memungkinkan pencarian dapat dilakukan setelah pengguna selesai mengetik (bukan setiap pengguna mengetikkan satu karakter) sehingga meningkatkan performansi pencarian.
 
 # FAQ/Troubleshooting
->  Q: Hasil pencarian menghasilkan `"No matching data found"`  
+>  Pertanyaan: Hasil pencarian menghasilkan `"No matching data found"`  
 
 Jawaban: Pencarian tidak dapat menemukan kata kunci terkait.
->  Q: Hasil pencarian menghasilkan `"SearchList has not been built. Please try typing it again"`  
+>  Pertanyaan: Hasil pencarian menghasilkan `"SearchList has not been built. Please try typing it again"`  
 
 Jawaban: Laman belum siap menjalankan fungsi pencarian. Mohon ketikkan ulang kata pencariannya. Error ini hanya terjadi pada pencarian nama dan elemen.
->  Q: Hasil pencarian menghasilkan `"Error fetching search list"`  
+>  Pertanyaan: Hasil pencarian menghasilkan `"Error fetching search list"`  
 
 Jawaban: Terjadi kesalahan koneksi ketika berkomunikasi dengan API. Mohon periksa koneksi internet Anda, dan coba lagi (refresh) setelah beberapa saat.
->  Q: Graf menjadi tidak teratur
+>  Pertanyaan: Graf menjadi tidak teratur
 
 Jawaban: Mohon klik salah satu simpul untuk melakukan render ulang garis graf.
